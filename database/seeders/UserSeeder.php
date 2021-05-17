@@ -15,10 +15,11 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        $emailData = ['Admin@gmail.com','nam@gmail.com'];
+        $emailData = ['Admin@gmail.com','user@gmail.com'];
+        $nameData = ['admin','user'];
         foreach ($emailData as $value){
             User::create([
-                'name' => 'Test',
+                'name' => 'client',
                 'email' => $value,
                 'password' => Hash::make(12345678)
             ]);
