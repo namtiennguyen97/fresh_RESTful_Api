@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Services\ServiceImplement\UserServiceImpl;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
-class UserController extends Controller
+class UserApiController extends Controller
 {
     protected $userServiceImplement;
 
@@ -14,28 +15,35 @@ class UserController extends Controller
         $this->userServiceImplement = $userServiceImpl;
     }
 
+
     public function index()
     {
         return $this->userServiceImplement->index();
     }
 
-    public function findOrFail($id)
+
+    public function create()
+    {
+       //return view
+    }
+
+
+    public function store(Request $request)
+    {
+        $newData = $this->userServiceImplement->create($request->all());
+        return response()->json($newData, 200);
+    }
+
+
+    public function show($id)
     {
         return $this->userServiceImplement->findOrFail($id);
     }
 
-    public function create(Request $request)
+
+    public function edit($id)
     {
-        // uncomment the codes below if u want to custom validate or make new RequestValidator with Laravel - php artisan make:request UserRequest
-
-//        $request->validate([
-//            'name' => 'required|max:20',
-//            'email' => 'unique:users|required',
-//            'password' => 'required'
-//        ]);
-
-        $newData = $this->userServiceImplement->create($request->all());
-        return response()->json($newData, 200);
+        //return view
     }
 
 
@@ -45,12 +53,9 @@ class UserController extends Controller
         return $this->userServiceImplement->update($request->all(), $currentUser);
     }
 
-    public function show($id){
-      return  $this->userServiceImplement->findOrFail($id);
-//       return view('update',compact('user'));
-    }
 
-    public function destroy($id){
+    public function destroy($id)
+    {
         $this->userServiceImplement->destroy($id);
     }
 }

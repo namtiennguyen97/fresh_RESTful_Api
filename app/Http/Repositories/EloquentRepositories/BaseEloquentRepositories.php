@@ -64,8 +64,11 @@ abstract class BaseEloquentRepositories implements Repository
     }
     public function destroy($object)
     {
-
-        return $this->model->destroy($object);
+        if (!$object){
+            return response()->json('Error: No object has found!',404);
+        }
+         $this->model->destroy($object);
+        return response()->json('Data has been deleted!',200);
     }
 
 

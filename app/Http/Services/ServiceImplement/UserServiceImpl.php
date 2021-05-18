@@ -38,6 +38,6 @@ class UserServiceImpl implements \App\Http\Services\UserService
 
     public function destroy($id)
     {
-        // TODO: Implement destroy() method.
+        return $this->userRepositoryImpl->destroy($id);
     }
 }
