@@ -7,7 +7,7 @@ This is Restful-api frames using fresh Laravel. All repository, Eloquent, Servic
 
 #### Repository->Service->Controller. 
 
-#### To examp this Api with crud ajax, access: https://github.com/namtiennguyen97/get_Api_Crud_Ajax . You can clone or just take a look. 
+#### To example this Back-end Api crud ajax with Javascript/Jquery, access: https://github.com/namtiennguyen97/get_Api_Crud_Ajax . You can clone or just take a look. 
 
 ### For the beginner.
 
