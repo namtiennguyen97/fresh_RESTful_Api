@@ -31,15 +31,15 @@ abstract class BaseEloquentRepositories implements Repository
     {
         $data = $this->model->all();
         if (!$data){
-            return response()->json('Message: No data found!',501);
+            return response()->json('Message: No data found!',404);
         }
-        return $data;
+        return response()->json($data,200);
     }
 
     public function create($data)
     {
         if (!$data){
-            return response()->json('Message: No create data found!',501);
+            return response()->json('Message: No create data found!',404);
         }
         return $this->model->create($data);
     }
@@ -48,24 +48,27 @@ abstract class BaseEloquentRepositories implements Repository
     {
         $result = $this->model->findOrFail($id);
         if (!$result){
-            return response()->json('Error message: No' .$id. ' has found.',501);
+            return response()->json('No data found!',404);
         }
-        return $result;
+       return $result;
     }
 
     public function update($data, $object)
     {
-        // TODO: Implement update() method.
+        if (!$object || !$data){
+        return response()->json('No object found!',404);
+        }
+         $object->update($data);
+        return response()->json($object,200);
+
     }
     public function destroy($object)
     {
-        // TODO: Implement destroy() method.
+
+        return $this->model->destroy($object);
     }
 
-    public function show($object)
-    {
-        // TODO: Implement show() method.
-    }
+
 
 
 }

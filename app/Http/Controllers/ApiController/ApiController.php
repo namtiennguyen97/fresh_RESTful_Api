@@ -4,7 +4,8 @@
 namespace App\Http\Controllers\ApiController;
 
 
-use Illuminate\Routing\Controller;
+
+use App\Http\Controllers\Controller;
 
 class ApiController extends Controller
 {

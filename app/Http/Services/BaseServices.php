@@ -14,7 +14,7 @@ interface BaseServices
 
     public function update($request, $id);
 
-    public function show($id);
+
 
     public function destroy($id);
 }

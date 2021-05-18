@@ -25,4 +25,19 @@ class UserServiceImpl implements \App\Http\Services\UserService
         // repository return variable data
        return $this->userRepositoryImpl->findOrFail($id);
     }
+    public function create($data)
+    {
+       return $this->userRepositoryImpl->create($data);
+    }
+
+    public function update($request, $id)
+    {
+        return $this->userRepositoryImpl->update($request,$id);
+    }
+
+
+    public function destroy($id)
+    {
+        // TODO: Implement destroy() method.
+    }
 }
